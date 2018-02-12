@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.6'
+gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -63,8 +63,15 @@ gem 'devise'
 gem 'devise-guests', '~> 0.6'
 gem 'rsolr', '>= 1.0'
 group :development, :test do
+  gem 'capybara'
+  gem 'capybara-maleficent', '~> 0.2'
+  gem "chromedriver-helper"
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
   gem 'fcrepo_wrapper'
+  gem 'rspec-activemodel-mocks'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
 end
 
 gem 'riiif', '~> 1.1'
