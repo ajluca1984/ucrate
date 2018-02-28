@@ -2,10 +2,10 @@ Seed the database.
 
 ### Users
 
-### Create a Generic Work
+### Create works
 1. Log in as yourself
-1. Create a work with `public` visibility
-1. Describe the work using every field
+1. Create a Generic Work with `public` visibility
+1. Describe the work using every metadata field
 1. Attach a PDF, and Word document, and an image to the work 
 1. Save the work
 1. Change the PDF and the image to `private` visibility
@@ -13,18 +13,38 @@ Seed the database.
 1. Change the work visibiliy to `institution` and allow the system to update the visibility of all files
 1. Verify the work and all files have `institution` visibility
 
-### Add and delete files
+### Add and delete files to works
 1. Find an existing work and click the `Edit` button
 1. Upload another file
 1. Save the work
 1. Delete the first file from the work
 1. Verify the file is removed
 
-### View the work
-1. Add to Collection
-1. Add External Link
-1. Update Related Works
-1. Delete Work
+### View works
+1. View the work's show page
+1. Verify the appropriate metadata fields and labels are being displayed
+1. Verify the appropriate buttons are being displayed (Edit, Delete, File Manager, etc.)
+1. Use the File Manager to change the order of files and select a new thumbnail for the work
+
+### Delete works
+1. Delete the work
+1. Verify the work and attached files can no longer be found
+
+### Create collections
+1. Log in as an admin
+1. Create a new collection type named "Test"
+1. Log in as yourself
+1. Create a new collection with type "Test" using `public` visibility
+1. Describe the collection using every metadata field
+1. Save the collection
+
+### View collections
+1. 
+
+
+
+
+
 
 ### Create Collection and Share
 1. Log in as self
