@@ -9,9 +9,9 @@ Seed the database.
 1. Attach a PDF, and Word document, and an image to the work 
 1. Save the work
 1. Change the PDF and the image to `private` visibility
-1. Verify that the PDF and image are marked `private` and can only be seen when you are logged in
+1. Verify that the PDF and image are marked `private` and can only be seen when you are logged in as yourself
 1. Change the work visibiliy to `institution` and allow the system to update the visibility of all files
-1. Verify the work and all files have `institution` visibility
+1. Verify the work and all files have `institution` visibility and can only be seen by logged-in users
 
 ### Add and delete files to works
 1. Find an existing work and click the `Edit` button
@@ -34,12 +34,20 @@ Seed the database.
 1. Log in as an admin
 1. Create a new collection type named "Test"
 1. Log in as yourself
-1. Create a new collection with type "Test" using `public` visibility
+1. Create a new collection with type "Test" using `private` visibility
 1. Describe the collection using every metadata field
+1. Verify the collection can only be seen when you are logged in as yourself
 1. Save the collection
+1. Add at least ten works to the collection
+1. Change the collection visibility to `public` and verify in can be seen by non-logged in users
 
 ### View collections
-1. 
+1. View the collection's show page
+1. Verify the appropriate metadata fields and labels are being displayed
+1. Verify the appropriate buttons are being displayed (Edit, Delete, etc.)
+1. Verify all of the collection's works are listed
+
+
 
 
 
