@@ -41,6 +41,8 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
     - 'app/controllers/catalog_controller.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
+    - 'config/initializers/devise.rb'
+    - 'config/routes.rb'
 
 Metrics/ClassLength:
   Exclude:
@@ -55,6 +57,11 @@ Naming/FileName: # https://github.com/bbatsov/rubocop/issues/2973
 
 Style/AsciiComments:
   Enabled: false
+
+Style/BracesAroundHashParameters:
+  Exclude:
+    - 'config/initializers/devise.rb'
+
 
 Style/CollectionMethods:
   PreferredMethods:
@@ -115,6 +122,10 @@ Rails/FilePath:
 Rails/OutputSafety:
   Exclude:
 
+RSpec/AnyInstance:
+  Exclude:
+    - 'spec/controllers/hyrax/contact_form_controller_spec.rb'
+
 RSpec/DescribeClass:
   Exclude:
     - 'spec/abilities/**/*'
@@ -123,6 +134,10 @@ RSpec/DescribeClass:
     - 'spec/inputs/**/*'
     - 'spec/tasks/rake_spec.rb'
     - 'spec/views/**/*'
+
+Rails/TimeZone:
+  Exclude: 
+    - 'spec/service/collection_metadata_csv_factory_spec.rb'
 
 RSpec/ContextWording:
   Enabled: false
@@ -176,6 +191,7 @@ RSpec/ExampleLength:
     - 'spec/features/work_show_spec.rb'
     - 'spec/features/workflow_state_changes_spec.rb'
     - 'spec/features/users_spec.rb'
+    - 'spec/features/uc_shibboleth_spec.rb'
 
 RSpec/ExpectInHook:
   Exclude:
@@ -184,3 +200,8 @@ RSpec/ExpectInHook:
 RSpec/VerifiedDoubles:
   Exclude:
     - 'spec/features/create_child_work_spec.rb'
+    - 'spec/controllers/hyrax/contact_form_controller_spec.rb'
+
+RSpec/InstanceVariable:
+  Exclude:
+    - 'spec/controllers/callbacks_controller_spec.rb'

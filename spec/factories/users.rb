@@ -2,6 +2,8 @@ FactoryBot.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@example.com" }
     password 'password'
+    first_name 'Sample'
+    last_name 'User'
 
     transient do
       # Allow for custom groups when a user is instantiated.
@@ -43,6 +45,21 @@ FactoryBot.define do
         User.batch_user.send_message(user, 'These files have been saved', 'Batch upload complete', false)
       end
     end
+  end
+
+  factory :shibboleth_user, class: 'User' do
+    ignore do
+      count 1
+      person_pid nil
+    end
+    email 'sixplus2@test.com'
+    password '12345678'
+    first_name 'Fake'
+    last_name 'User'
+    password_confirmation '12345678'
+    sign_in_count { count.to_s }
+    provider 'shibboleth'
+    uid 'sixplus2@test.com'
   end
 
   trait :guest do

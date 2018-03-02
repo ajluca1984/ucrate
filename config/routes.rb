@@ -1,4 +1,6 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
+  mount BrowseEverything::Engine => '/browse'
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?
   mount Blacklight::Engine => '/'
   concern :searchable, Blacklight::Routes::Searchable.new
@@ -7,7 +9,15 @@ Rails.application.routes.draw do
     concerns :searchable
   end
 
-  devise_for :users
+  authenticate :user, ->(u) { u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
+  devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
+  mount Hydra::RoleManagement::Engine => '/'
+
+  get 'login' => 'static#login'
+
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
   resources :welcome, only: 'index'

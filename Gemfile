@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'browse-everything', github: 'uclibs/browse-everything', branch: 'master'
+gem 'kaltura', '0.1.1'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
@@ -34,12 +37,28 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise'
+gem 'devise-guests', '~> 0.6'
+gem 'hydra-role-management'
+gem 'hyrax', git: 'https://github.com/samvera/hyrax.git', tag: 'v2.1.0.beta1'
+gem 'omniauth-openid'
+gem 'omniauth-shibboleth'
+gem 'riiif', '~> 1.1'
+gem 'rsolr', '>= 1.0'
+gem 'sidekiq'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'coveralls', require: false
-  gem 'rubocop', '~> 0.51.0'
-  gem 'rubocop-rspec', '~> 1.20.1'
+  gem 'fcrepo_wrapper'
+  gem 'rails-controller-testing'
+  gem 'rspec-its'
+  gem 'rspec-rails'
+  gem 'show_me_the_cookies'
+  gem 'solr_wrapper', '>= 0.3'
 end
 
 group :development do
@@ -51,27 +70,15 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'hyrax', git: 'https://github.com/samvera/hyrax.git', ref: '51b45cc2dc35eb8101f3eec5bde28922b63a0872'
-group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
-end
-
-gem 'devise'
-gem 'devise-guests', '~> 0.6'
-gem 'rsolr', '>= 1.0'
-group :development, :test do
+group :test do
   gem 'capybara'
   gem 'capybara-maleficent', '~> 0.2'
   gem "chromedriver-helper"
+  gem 'coveralls', require: false
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'fcrepo_wrapper'
   gem 'rspec-activemodel-mocks'
-  gem 'rspec-rails'
+  gem 'rubocop', '~> 0.51.0'
+  gem 'rubocop-rspec', '~> 1.20.1'
   gem 'selenium-webdriver'
 end
-
-gem 'riiif', '~> 1.1'
