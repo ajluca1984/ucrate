@@ -1,6 +1,8 @@
 Seed the database.
 
-### Users
+### User List
+
+***
 
 ### Create works
 1. Log in as yourself
@@ -30,6 +32,8 @@ Seed the database.
 1. Delete the work
 1. Verify the work and attached files can no longer be found
 
+***
+
 ### Create collections
 1. Log in as an admin
 1. Create a new collection type named "Test"
@@ -52,7 +56,7 @@ Seed the database.
 
 
 
-
+***
 
 ### Create Collection and Share
 1. Log in as self
