@@ -1,6 +1,7 @@
-Seed the database.
+### Seed the database
+* <insert rake task here>
 
-### User List
+### Test user List
 
 ***
 
@@ -40,6 +41,7 @@ Seed the database.
 1. Log in as yourself
 1. Create a new collection with type "Test" using `private` visibility
 1. Describe the collection using every metadata field
+1. Add branding to the collection
 1. Verify the collection can only be seen when you are logged in as yourself
 1. Save the collection
 1. Add at least ten works to the collection
@@ -51,38 +53,13 @@ Seed the database.
 1. Verify the appropriate buttons are being displayed (Edit, Delete, etc.)
 1. Verify all of the collection's works are listed
 
-
-
-
-
+### Delete collections
+1. Delete some works from the collection
+1. Verify the works are no longer listed in the collection
+1. Delete the collection
+1. Verify the collection can no longer be found
 
 ***
-
-### Create Collection and Share
-1. Log in as self
-1. Create a collection 
-1. Add a title, description, image
-1. Set access control to Your institution 
-1. Create another collection
-1. Add a title, description, image
-1. Set access control to Public
-1. Create another collection
-1. Add a title and description
-1. Set access control to private
-1. Add at least 10 items to each collections, a mix of your own content and others
-1. Log out 
-1. Verify you can discover the publically accessible but not the other two
-1. Verify that the items are listed alphabetically.
-1. Login as Professor Nodeposits
-1. Verify you can discover the publically accessible, the Your institution but not the private
-1. Log in as self
-1. Verify you can discover all three
-1. Navigate to one of your collections
-1. Edit the access controls
-1. Verify access controls
-1. Delete several items from the collection
-1. Delete a collection
-1. Verify collection is not listed
 
 ### Profile Curation
 1. Log in as self
