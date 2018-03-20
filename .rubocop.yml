@@ -50,6 +50,8 @@ Metrics/ClassLength:
 
 Metrics/MethodLength:
   Max: 13
+  Exclude:
+    - 'lib/seed_methods.rb'
 
 Naming/FileName: # https://github.com/bbatsov/rubocop/issues/2973
   Exclude:
