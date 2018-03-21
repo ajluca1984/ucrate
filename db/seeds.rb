@@ -1,37 +1,53 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-require 'seed_methods'
+class AddSeedObjects < ActiveRecord::Migration[5.1]
 
-class AddInitialObjects < ActiveRecord::Migration[5.1]
+  password = Devise.friendly_token.first(8)
 
-  rando_pass = Devise.friendly_token.first(8)
-  accounts = {'manydeposits@example.com' => 'Many Deposits', 'nodeposits@example.com' => 'No Deposits', 'delegate@example.com' => 'Student Delegate'}
+  many_deposits = User.create(
+    email: 'manydeposits93@example.com',
+    first_name: 'Many',
+    last_name: 'Deposits',
+    password: password,
+    password_confirmation: password)
+  puts "Seed account created: #{many_deposits.email}, #{password}"
 
-  accounts.each do | email, name |
-    unless User.where(email: email).exists?
-      SeedMethods.new_account(email, name, rando_pass)
-      puts "-- Test account created: #{email}, #{rando_pass}"
-    end
+  student_delegate = User.create(
+    email: 'delegate63@example.com',
+    first_name: 'Student',
+    last_name: 'Delegate',
+    password: password,
+    password_confirmation: password)
+  puts "Seed account created: #{student_delegate.email}, #{password}"
+
+  admin_user = User.create(
+    email: 'admin53@example.com',
+    first_name: 'Admin',
+    last_name: 'User',
+    password: password,
+    password_confirmation: password)
+  admin = Role.create(name: 'admin')
+  admin.users << admin_user
+  admin.save
+  puts "Seed account created: #{admin_user.email}, #{password} (admin)"
+
+  10.times do
+    work = GenericWork.create(
+      title: ['This is the title NEW'],
+      description: ['This is the description'],
+      depositor: many_deposits.email,
+      owner: many_deposits.email,
+      creator: ["#{many_deposits.last_name}, #{many_deposits.first_name}"],
+      subject: ['geography', 'history', 'chemistry'],
+      rights_statement: ["http://rightsstatements.org/vocab/InC/1.0/"],
+      publisher: ['Penguin Publishing'],
+      language: ['English'],
+      based_near: ['The world'],
+      date_created: [Time.zone.at(rand * Time.now.to_i).to_s.sub(/\s(.*)/, '')]
+    )
+    work.read_groups = [Hydra::AccessControls::AccessRight::PERMISSION_TEXT_VALUE_PUBLIC]
+    work.edit_users = [many_deposits.email]
+    work.save
+    work.to_solr
   end
-
-  accounts.reject{ | email, name | email == 'nodeposits@example.com' }.each do | email, name |
-    10.times { |i| SeedMethods.new_genericwork(email, name) }
-  end
-
-  def self.create_admin_role(id)
-    admin = Role.create(name: 'admin')
-    admin.users << User.find(id)
-    admin.save
-  end
-
-  def self.create_admin_account
-    rando_pass = Devise.friendly_token.first(8)
-    user = User.create email: 'admin@example.com', password: rando_pass
-    puts "\n\n\t\t*** ADMIN USER (admin@example.com) PASS: #{rando_pass} ***\n\n"
-    user.save
-    user.id
-  end
-
-  create_admin_role(create_admin_account)
-  ActiveFedora::Base.reindex_everything
 end
