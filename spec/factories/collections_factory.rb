@@ -1,5 +1,8 @@
 FactoryBot.define do
   factory :collection do
+    # DEPRECATION: This factory is being replaced by collection_lw defined in collections.rb.  New tests should use the
+    # light weight collection factory.  DO NOT ADD tests using this factory.
+    #
     # rubocop:disable Metrics/LineLength
     # @example let(:collection) { build(:collection, collection_type_settings: [:not_nestable, :discoverable, :sharable, :allow_multiple_membership], with_nesting_attributes: {ancestors: [], parent_ids: [], pathnames: [], depth: 1}) }
     # rubocop:enable Metrics/LineLength
@@ -22,7 +25,7 @@ FactoryBot.define do
       create_access false
       with_nesting_attributes nil
     end
-    sequence(:title) { |n| ["Title #{n}"] }
+    sequence(:title) { |n| ["Collection Title #{n}"] }
 
     after(:build) do |collection, evaluator|
       collection.apply_depositor_metadata(evaluator.user.user_key)
@@ -85,7 +88,7 @@ FactoryBot.define do
       user { create(:user) }
     end
 
-    sequence(:title) { |n| ["Title #{n}"] }
+    sequence(:title) { |n| ["User Collection Title #{n}"] }
 
     after(:build) do |collection, evaluator|
       collection.apply_depositor_metadata(evaluator.user.user_key)
@@ -105,7 +108,7 @@ FactoryBot.define do
       do_save false
     end
 
-    sequence(:title) { |n| ["Title #{n}"] }
+    sequence(:title) { |n| ["Typeless Collection Title #{n}"] }
 
     after(:build) do |collection, evaluator|
       collection.apply_depositor_metadata(evaluator.user.user_key)
