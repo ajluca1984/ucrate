@@ -43,7 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-guests', '~> 0.6'
 gem 'hydra-role-management'
-gem 'hyrax', git: 'https://github.com/samvera/hyrax.git', ref: '01d8ad5ecdf5b5658e6800d23d570c5d7b2c9cdc' # v2.1.0_beta1b_qa
+gem 'hyrax', git: 'https://github.com/samvera/hyrax.git', ref: '2ac3d423d9805c31e0b92df0a26eff76cf03a81e' #v2.1.0.beta2a_qa
 gem 'omniauth-openid'
 gem 'omniauth-shibboleth'
 gem 'riiif', '~> 1.1'

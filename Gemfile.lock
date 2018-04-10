@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/samvera/hyrax.git
-  revision: 01d8ad5ecdf5b5658e6800d23d570c5d7b2c9cdc
-  ref: 01d8ad5ecdf5b5658e6800d23d570c5d7b2c9cdc
+  revision: 2ac3d423d9805c31e0b92df0a26eff76cf03a81e
+  ref: 2ac3d423d9805c31e0b92df0a26eff76cf03a81e
   specs:
-    hyrax (2.1.0.beta1)
+    hyrax (2.1.0.beta2)
       active-fedora (~> 11.5, >= 11.5.2)
       almond-rails (~> 0.1)
       awesome_nested_set (~> 3.1)
@@ -805,7 +805,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     tins (0.13.2)
-    tinymce-rails (4.7.9)
+    tinymce-rails (4.7.10)
       railties (>= 3.1.1)
     turbolinks (5.1.0)
       turbolinks-source (~> 5.1)

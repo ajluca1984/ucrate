@@ -218,14 +218,6 @@ ActiveRecord::Schema.define(version: 20180319152850) do
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
   end
 
-  create_table "metadata_exports", force: :cascade do |t|
-    t.string "collection_title"
-    t.string "collection_pid"
-    t.integer "number_of_works"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "minter_states", force: :cascade do |t|
     t.string "namespace", default: "default", null: false
     t.string "template", null: false
