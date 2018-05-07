@@ -44,7 +44,7 @@ class StaticController < ApplicationController
   def doi_help
     render "static/doi_help"
   end
-  
+
   def login
     if current_user
       redirect_to Hyrax::Engine.routes.url_helpers.dashboard_path
