@@ -44,6 +44,7 @@ Metrics/BlockLength:
     - 'config/initializers/simple_form_bootstrap.rb'
     - 'config/initializers/devise.rb'
     - 'config/routes.rb'
+    - 'app/views/sitemaps/index.xml.builder'
 
 Metrics/ClassLength:
   Exclude:
@@ -142,7 +143,7 @@ RSpec/DescribeClass:
     - 'spec/views/**/*'
 
 Rails/TimeZone:
-  Exclude: 
+  Exclude:
     - 'spec/services/collection_metadata_csv_factory_spec.rb'
 
 RSpec/ContextWording:
@@ -191,8 +192,11 @@ RSpec/ExampleLength:
     - 'spec/features/create_child_work_spec.rb'
     - 'spec/features/create_work_spec.rb'
     - 'spec/features/create_work_admin_spec.rb'
+    - 'spec/features/dashboard/all_works.rb'
     - 'spec/features/dashboard/collection_spec.rb'
     - 'spec/features/dashboard/display_dashboard_spec.rb'
+    - 'spec/features/display_admin_dashboard_spec.rb'
+    - 'spec/features/edit_content_block_admin_spec.rb'
     - 'spec/features/edit_work_spec.rb'
     - 'spec/features/embargo_spec.rb'
     - 'spec/features/lease_spec.rb'
