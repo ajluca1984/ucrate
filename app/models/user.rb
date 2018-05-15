@@ -36,5 +36,9 @@ class User < ApplicationRecord
 
   def student?
     uc_affiliation == 'student'
+
+  def display_name
+    name
+
   end
 end
