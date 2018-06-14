@@ -41,13 +41,16 @@ describe 'UC account workflow', type: :feature do
   end
 
   describe 'overridden devise password reset page' do
-    it 'shows a Central Login option' do
+    it 'shows a Central Login option with shibboleth enabled' do
+      AUTH_CONFIG['shibboleth_enabled'] = true
       visit new_user_password_path
-      if yaml['test']['shibboleth_enabled'] == true
-        page.should have_content('Central Login form')
-      else
-        page.should_not have_content('Central Login form')
-      end
+      expect(page).to have_content('Central Login form')
+    end
+
+    xit 'does not show a Central Login option with shibboleth disabled' do
+      AUTH_CONFIG['shibboleth_enabled'] = false
+      visit new_user_password_path
+      expect(page).not_to have_content('Central Login form') # This string appears in the help text on the page
     end
 
     it 'does not display the Shared links at the bottom' do
@@ -58,13 +61,16 @@ describe 'UC account workflow', type: :feature do
   end
 
   describe 'overridden devise registration page' do
-    it 'shows a sign up form if signups are enabled or a request link if signups are disabled' do
+    it 'shows a sign up form if signups are enabled' do
+      AUTH_CONFIG['signups_enabled'] = true
       visit new_user_registration_path
-      if yaml['test']['signups_enabled'] == true
-        page.should have_field('user[email]')
-      else
-        expect(page).to have_link('use the contact page', href: '/contact')
-      end
+      page.should have_field('user[email]')
+    end
+
+    it 'shows a request link of signups are disabled' do
+      AUTH_CONFIG['signups_enabled'] = false
+      visit new_user_registration_path
+      expect(page).to have_link('use the contact page', href: '/contact')
     end
   end
 
@@ -72,20 +78,25 @@ describe 'UC account workflow', type: :feature do
     it 'shows a shibboleth login link if shibboleth is enabled' do
       AUTH_CONFIG['shibboleth_enabled'] = true
       visit new_user_session_path
-      if yaml['test']['shibboleth_enabled'] == true
-        expect(page).to have_link('Central Login form', href: '/users/auth/shibboleth')
-      else
-        expect(page).not_to have_link('Central Login form', href: '/users/auth/shibboleth')
-      end
+      expect(page).to have_link('Central Login form', href: '/users/auth/shibboleth')
+    end
+
+    it 'does not show a shibboleth login link if shibboleth is disabled' do
+      AUTH_CONFIG['shibboleth_enabled'] = false
+      visit new_user_session_path
+      expect(page).not_to have_link('Central Login form', href: '/users/auth/shibboleth')
     end
 
     it 'shows a signup link if signups are enabled' do
+      AUTH_CONFIG['signups_enabled'] = true
       visit new_user_session_path
-      if yaml['test']['signups_enabled'] == true
-        page.should have_link('Sign up', href: new_user_registration_path)
-      else
-        page.should_not have_link('Sign up', href: new_user_registration_path)
-      end
+      page.should have_link('Sign up', href: new_user_registration_path)
+    end
+
+    it 'does not show signup link if signups are disabled' do
+      AUTH_CONFIG['signups_enabled'] = false
+      visit new_user_session_path
+      page.should_not have_link('Sign up', href: new_user_registration_path)
     end
   end
 
