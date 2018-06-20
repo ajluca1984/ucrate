@@ -262,6 +262,7 @@ RSpec.describe 'collection', type: :feature, clean_repo: true do
         fill_in('Title', with: title)
         fill_in('Abstract or Summary', with: description)
         fill_in('Related URL', with: 'http://example.com/')
+        select('Creative Commons BY Attribution 4.0 International', from: 'License')
 
         click_button("Save")
         expect(page).to have_content title
@@ -689,6 +690,7 @@ RSpec.describe 'collection', type: :feature, clean_repo: true do
         fill_in('Creator', with: 'Doe, Jane')
         fill_in('Keyword', with: 'testing')
         select('In Copyright', from: 'Rights statement')
+        select('Creative Commons BY Attribution 4.0 International', from: 'License')
         # check required acceptance
         check('agreement')
 

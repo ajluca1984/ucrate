@@ -7,5 +7,9 @@ module Hyrax
   class StudentWorkForm < Hyrax::Forms::WorkForm
     self.model_class = ::StudentWork
     self.terms += [:resource_type]
+
+    def primary_terms
+      [:title, :creator, :keyword, :rights_statement, :license]
+    end
   end
 end

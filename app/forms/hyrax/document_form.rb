@@ -7,5 +7,9 @@ module Hyrax
   class DocumentForm < Hyrax::Forms::WorkForm
     self.model_class = ::Document
     self.terms += [:resource_type]
+
+    def primary_terms
+      [:title, :creator, :keyword, :rights_statement, :license]
+    end
   end
 end
