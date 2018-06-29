@@ -1,27 +1,26 @@
 # frozen_string_literal: true
 
 # Generated via
-#  `rails generate hyrax:work Document`
+#  `rails generate hyrax:work Image`
 require 'rails_helper'
 
-RSpec.describe Hyrax::DocumentForm do
-  let(:work) { Dataset.new }
+RSpec.describe Hyrax::GenericWorkForm do
+  let(:work) { GenericWork.new }
   let(:form) { described_class.new(work, nil, nil) }
 
   describe "#required_fields" do
     subject { form.required_fields }
 
-    it { is_expected.to eq [:title, :creator, :description, :college, :department] }
+    it { is_expected.to eq [:title, :creator, :description] }
   end
 
   describe "#primary_terms" do
     subject { form.primary_terms }
 
     it {
-      is_expected.to eq [:title, :creator, :description, :college, :department,
-                         :publisher, :genre, :subject, :geo_subject,
-                         :time_period, :language,
-                         :required_software, :note, :related_url]
+      is_expected.to eq [:title, :creator, :description,
+                         :publisher, :subject, :college, :department, :geo_subject,
+                         :time_period, :language, :required_software, :note, :related_url]
     }
   end
 
@@ -67,7 +66,7 @@ RSpec.describe Hyrax::DocumentForm do
 
     it 'permits parameters' do
       expect(attrib['title']).to eq ['foo']
-      expect(attrib['description']).to be_empty
+      expect(attrib['description']).to be_nil
       expect(attrib['visibility']).to eq 'open'
       expect(attrib['member_of_collection_ids']).to eq ['123456', 'abcdef']
     end
@@ -86,7 +85,7 @@ RSpec.describe Hyrax::DocumentForm do
 
       it 'removes blank parameters' do
         expect(attrib['title']).to be_empty
-        expect(attrib['description']).to be_empty
+        expect(attrib['description']).to be_nil
         expect(attrib['member_of_collection_ids']).to be_empty
         expect(attrib['on_behalf_of']).to eq 'Melissa'
       end

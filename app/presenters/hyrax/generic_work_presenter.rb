@@ -4,5 +4,6 @@
 #  `rails generate hyrax:work GenericWork`
 module Hyrax
   class GenericWorkPresenter < Hyrax::WorkShowPresenter
+    delegate :genre, :time_period, :required_software, :note, to: :solr_document
   end
 end

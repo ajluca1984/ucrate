@@ -687,8 +687,12 @@ RSpec.describe 'collection', type: :feature, clean_repo: true do
         click_link "Descriptions" # switch tab
         fill_in('Title', with: 'New Work for Collection')
         fill_in('Creator', with: 'Doe, Jane')
-        fill_in('Keyword', with: 'testing')
-        select('In Copyright', from: 'Rights statement')
+        fill_in('Description', with: 'This is a description.')
+        # With selenium and the chrome driver, focus remains on the
+        # select box. Click outside the box so the next line can't find
+        # its element
+        find('body').click
+        choose('generic_work_visibility_open')
         # check required acceptance
         check('agreement')
 

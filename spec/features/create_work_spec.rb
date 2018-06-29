@@ -43,8 +43,7 @@ RSpec.describe 'Creating a new Work', :js, :workflow do
       expect(page).to have_field("Creator", with: user.name_for_works)
       fill_in('Title', with: 'My Test Work')
       fill_in('Creator', with: 'Doe, Jane')
-      fill_in('Keyword', with: 'testing')
-      select('In Copyright', from: 'Rights statement')
+      fill_in('Description', with: 'This is a description.')
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find
       # its element
@@ -87,8 +86,7 @@ RSpec.describe 'Creating a new Work', :js, :workflow do
       expect(page).to have_field("Creator", with: second_user.name_for_works)
       fill_in('Title', with: 'My Test Work')
       fill_in('Creator', with: 'Doe, Jane')
-      fill_in('Keyword', with: 'testing')
-      select('In Copyright', from: 'Rights statement')
+      fill_in('Description', with: 'This is a description.')
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find
       # its element

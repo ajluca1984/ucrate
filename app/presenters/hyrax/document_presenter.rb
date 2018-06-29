@@ -4,5 +4,6 @@
 #  `rails generate hyrax:work Document`
 module Hyrax
   class DocumentPresenter < Hyrax::WorkShowPresenter
+    delegate :college, :department, :genre, :time_period, :required_software, :note, to: :solr_document
   end
 end

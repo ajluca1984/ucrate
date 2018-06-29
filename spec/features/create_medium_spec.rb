@@ -41,7 +41,6 @@ RSpec.describe 'Create a Medium', js: true do
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "Medium"
       click_button "Create work"
-
       expect(page).to have_content "Add New Medium"
       click_link "Files" # switch tab
       expect(page).to have_content "Add files"
@@ -53,8 +52,9 @@ RSpec.describe 'Create a Medium', js: true do
       click_link "Descriptions" # switch tab
       fill_in('Title', with: 'My Test Work')
       fill_in('Creator', with: 'Doe, Jane')
-      fill_in('Keyword', with: 'testing')
-      select('In Copyright', from: 'Rights statement')
+      fill_in('Description', with: 'Description')
+      fill_in('College', with: 'My College')
+      fill_in('Department', with: 'Department')
 
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find

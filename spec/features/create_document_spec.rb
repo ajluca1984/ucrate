@@ -53,8 +53,9 @@ RSpec.describe 'Create a Document', js: true do
       click_link "Descriptions" # switch tab
       fill_in('Title', with: 'My Test Work')
       fill_in('Creator', with: 'Doe, Jane')
-      fill_in('Keyword', with: 'testing')
-      select('In Copyright', from: 'Rights statement')
+      fill_in('Description', with: 'Description')
+      fill_in('College', with: 'College')
+      fill_in('Department', with: 'Department')
 
       # With selenium and the chrome driver, focus remains on the
       # select box. Click outside the box so the next line can't find

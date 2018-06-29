@@ -4,5 +4,6 @@
 #  `rails generate hyrax:work Dataset`
 module Hyrax
   class DatasetPresenter < Hyrax::WorkShowPresenter
+    delegate :genre, :time_period, :required_software, :note, to: :solr_document
   end
 end

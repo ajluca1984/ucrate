@@ -4,5 +4,6 @@
 #  `rails generate hyrax:work Etd`
 module Hyrax
   class EtdPresenter < Hyrax::WorkShowPresenter
+    delegate :genre, :time_period, :required_software, :note, :advisor, :geo_subject, to: :solr_document
   end
 end
